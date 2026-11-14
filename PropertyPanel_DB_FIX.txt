@@ -1,0 +1,16 @@
+
+PROPERTY PANEL FIX
+
+1. Find:
+confirm.addActionListener(e -> {
+
+2. Replace the fake success popup with DAO code.
+
+3. Use:
+Connection conn = DBConnector.getConnection();
+PropertyDAO dao = new PropertyDAO();
+
+4. Call:
+dao.insertProperty(...)
+
+5. Reload JTable after insert.

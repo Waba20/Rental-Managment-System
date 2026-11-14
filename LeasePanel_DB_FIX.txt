@@ -1,0 +1,11 @@
+
+LEASE PANEL FIX
+
+Use:
+Connection conn = DBConnector.getConnection();
+LeaseDAO dao = new LeaseDAO();
+
+Call:
+dao.insertLease(...)
+
+inside the Create Lease button.

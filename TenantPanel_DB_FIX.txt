@@ -1,0 +1,11 @@
+
+TENANT PANEL FIX
+
+Use:
+Connection conn = DBConnector.getConnection();
+TenantDAO dao = new TenantDAO();
+
+Call:
+dao.insertTenant(...)
+
+inside the Register Tenant button.

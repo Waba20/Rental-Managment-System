@@ -1,0 +1,11 @@
+
+PAYMENT PANEL FIX
+
+Use:
+Connection conn = DBConnector.getConnection();
+PaymentDAO dao = new PaymentDAO();
+
+Call:
+dao.insertPayment(...)
+
+inside the Record Payment button.

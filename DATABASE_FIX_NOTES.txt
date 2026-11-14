@@ -1,0 +1,17 @@
+
+FIXES APPLIED
+
+1. Database name corrected:
+   PropertyRentalDB -> JamesPropertyDB
+
+2. Property table column names corrected:
+   StreetAddress -> Address
+   RentalAmount -> MonthlyRental
+   PropertyStatus -> Status
+
+3. DBConnector updated for Windows Authentication.
+
+4. All Java files scanned and updated automatically.
+
+IMPORTANT:
+Make sure SQL Server SQLEXPRESS is running before testing.

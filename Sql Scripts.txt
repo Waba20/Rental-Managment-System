@@ -1,0 +1,91 @@
+ -- bit can be used for backyard,elevator access,elevator access--
+Create Database PropertyRentalDB
+
+CREATE TABLE PropertyType (
+PropertyTypeID INT Identity(1,1) PRIMARY KEY ,
+TypeName VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Property (
+    PropertyID INT Identity(1,1) PRIMARY KEY,
+    PropertyTypeID INT NOT NULL,
+    BuildingSize DECIMAL(10,2),
+    Address VARCHAR(255),
+    Location VARCHAR(100),
+    MarketValue DECIMAL(12,2),
+    MonthlyRental DECIMAL(10,2),
+    Status VARCHAR(50),
+
+    FOREIGN KEY (PropertyTypeID) REFERENCES PropertyType(PropertyTypeID)
+);
+
+CREATE TABLE House (
+    PropertyID INT PRIMARY KEY,
+    PlotSize DECIMAL(10,2),
+
+    FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Townhouse (
+    PropertyID INT PRIMARY KEY,
+    UnitNumber VARCHAR(50),
+    Backyard Varchar(10),
+   
+
+    FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Flat (
+    PropertyID INT PRIMARY KEY,
+    UnitNumber VARCHAR(50),
+    FloorLevel INT,
+    ElevatorAccess varchar(10),
+    Backyard varchar(10),
+
+    FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Tenant (
+    TenantID INT Identity(1,1) PRIMARY KEY ,
+    FirstName VARCHAR(100),
+    LastName VARCHAR(100),
+    IDNumber VARCHAR(50),
+    Phone VARCHAR(20),
+    Email VARCHAR(100),
+    Status VARCHAR(50)
+);
+
+CREATE TABLE Lease (
+    LeaseID INT Identity(1,1) PRIMARY KEY ,
+    PropertyID INT NOT NULL,
+    TenantID INT NOT NULL,
+    StartDate DATE,
+    EndDate DATE,
+    MonthlyRent DECIMAL(10,2),
+    Deposit DECIMAL(10,2),
+    DueDate INT,
+    GracePeriod INT,
+    LatePenalty DECIMAL(10,2),
+
+    FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID),
+    FOREIGN KEY (TenantID) REFERENCES Tenant(TenantID)
+);
+
+CREATE TABLE Payment (
+    PaymentID INT Identity(1,1) PRIMARY KEY,
+    LeaseID INT NOT NULL,
+    AmountPaid DECIMAL(10,2),
+    PaymentDate DATE,
+
+    FOREIGN KEY (LeaseID) REFERENCES Lease(LeaseID)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Users (
+    UserID INT Identity(1,1) PRIMARY KEY ,
+    Username VARCHAR(100),
+    ContactNumber VARCHAR(20)
+);

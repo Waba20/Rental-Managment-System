@@ -1,0 +1,22 @@
+
+THIS ZIP FIXES THE REAL ISSUE.
+
+Before:
+PropertyPanel only showed a popup.
+
+Now:
+PropertyPanel actually calls:
+
+- DBConnector.getConnection()
+- PropertyDAO.insertProperty()
+- insertHouse()
+- insertTownhouse()
+- insertFlat()
+
+The property should now insert into SQL Server.
+
+Database name used:
+PropertyRentalDB
+
+Authentication:
+Windows Authentication (integratedSecurity=true)
